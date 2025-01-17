@@ -41,6 +41,7 @@ class NetflixService {
       }
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionError) {
+        log("connection errror");
         throw Exception('Connection error check your internet connection');
       } else if (e.type == DioExceptionType.receiveTimeout) {
         throw Exception('server error');

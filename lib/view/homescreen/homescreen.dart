@@ -52,7 +52,7 @@ class _HomescreenState extends State<Homescreen> {
                     height: 500,
                     width: double.infinity,
                     fit: BoxFit.fitWidth,
-                    imageUrl: '${value.imagePath}${listOfdata[5].posterpath}',
+                    imageUrl: '${value.imagePath}${listOfdata[13].posterpath}',
                   ),
                   Positioned(
                     bottom: 0,

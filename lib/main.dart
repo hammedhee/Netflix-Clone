@@ -5,7 +5,8 @@ import 'package:netflix/controller/provider.dart';
 import 'package:netflix/view/splashscreen/splashscreen.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  await WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
