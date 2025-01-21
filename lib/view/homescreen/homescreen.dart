@@ -18,12 +18,11 @@ class _HomescreenState extends State<Homescreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<NetflixProvider>(context, listen: false).getAllData(context);
-      Provider.of<NetflixProvider>(context, listen: false).tvshows(context);
-      Provider.of<NetflixProvider>(context, listen: false)
-          .upcomingMovies(context);
-      Provider.of<NetflixProvider>(context, listen: false)
-          .topRatedMovies(context);
+      final provider = Provider.of<NetflixProvider>(context, listen: false);
+      provider.getAllData(context);
+      provider.topRatedMovies(context);
+      provider.upcomingMovies(context);
+      provider.tvshows(context);
     });
   }
 
@@ -36,6 +35,13 @@ class _HomescreenState extends State<Homescreen> {
         child: SafeArea(
             child: Consumer<NetflixProvider>(builder: (context, value, child) {
           final listOfdata = value.listOfData;
+          if (value.errorMessage != null) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(value.errorMessage!)));
+            });
+          }
+
           if (listOfdata.isEmpty) {
             return Center(
               child: CircularProgressIndicator(
@@ -127,22 +133,22 @@ class _HomescreenState extends State<Homescreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   Textconstants.toprated,
-                  style: TextStyle(color: Colors.white, fontSize: 34),
+                  style: TextStyle(color: Colors.white, fontSize: 30),
                 ),
               ),
               topRatedwid(value.topRated),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(Textconstants.upcoming,
-                    style: TextStyle(color: Colors.white, fontSize: 34)),
+                    style: TextStyle(color: Colors.white, fontSize: 30)),
               ),
               topRatedwid(value.upcoming),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(Textconstants.tvShow,
-                    style: TextStyle(color: Colors.white, fontSize: 34)),
+                    style: TextStyle(color: Colors.white, fontSize: 30)),
               ),
-              topRatedwid(value.tvShow)
+              topRatedwid(value.tvShow),
             ],
           );
         })),

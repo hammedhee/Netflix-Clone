@@ -24,7 +24,7 @@ class NetflixService {
         throw Exception('sever error');
       }
     }
-    throw Exception('error fetching data');
+    throw Exception('error');
   }
 
   Future<List<Netflixmodel>> topRated() async {
@@ -47,7 +47,7 @@ class NetflixService {
         throw Exception('server error');
       }
     }
-    throw Exception('errror in top rated');
+    throw Exception('error');
   }
 
   Future<List<Netflixmodel>> upcoming() async {
@@ -69,7 +69,7 @@ class NetflixService {
         throw Exception('server error');
       }
     }
-    throw Exception('errror in top rated');
+    throw Exception('error');
   }
 
   Future<List<Netflixmodel>> tvshows() async {
@@ -91,7 +91,7 @@ class NetflixService {
         throw Exception('server error');
       }
     }
-    throw Exception('errror in tv show');
+    throw Exception('error ');
   }
 
   Future<List<Netflixmodel>> searchUpdate({required String movie}) async {
