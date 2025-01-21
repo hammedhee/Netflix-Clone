@@ -29,19 +29,21 @@ class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: SafeArea(
             child: Consumer<NetflixProvider>(builder: (context, value, child) {
           final listOfdata = value.listOfData;
           if (value.errorMessage != null) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text(value.errorMessage!)));
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(value.errorMessage!),
+                ),
+              );
             });
           }
-
           if (listOfdata.isEmpty) {
             return Center(
               child: CircularProgressIndicator(

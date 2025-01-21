@@ -16,7 +16,7 @@ class NetflixService {
       final response = await dio.get(baseurl);
       if (response.statusCode == 200) {
         List<dynamic> data = response.data['results'];
-        log(response.data.toString());
+        log('full data fetched');
         return data.map((e) => Netflixmodel.fromJson(e)).toList();
       }
     } on DioException catch (e) {

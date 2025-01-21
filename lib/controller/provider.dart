@@ -10,7 +10,6 @@ class NetflixProvider extends ChangeNotifier {
   List<Netflixmodel> upcoming = [];
   List<Netflixmodel> tvShow = [];
   List<Netflixmodel> search = [];
-  bool flage = false;
   String? errorMessage;
   TextEditingController searchtext = TextEditingController();
 
@@ -20,66 +19,47 @@ class NetflixProvider extends ChangeNotifier {
   }
 
   Future<void> getAllData(BuildContext context) async {
-    flage = true;
     try {
       listOfData = await netflix.getAllNetflix();
     } catch (e) {
       errorMessges('$e');
-    } finally {
-      flage = false;
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   Future<void> topRatedMovies(BuildContext context) async {
-    flage = true;
-
     try {
       topRated = await netflix.topRated();
     } catch (e) {
       errorMessges('$e');
-    } finally {
-      flage = false;
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   Future<void> upcomingMovies(BuildContext context) async {
-    flage = true;
-
     try {
       upcoming = await netflix.upcoming();
     } catch (e) {
       errorMessges('$e');
-    } finally {
-      flage = false;
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   Future<void> tvshows(BuildContext context) async {
     try {
-      flage = true;
-
       tvShow = await netflix.tvshows();
     } catch (e) {
       errorMessges('$e');
-    } finally {
-      flage = false;
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   Future<void> searchMovies(BuildContext context) async {
-    flage = true;
-
     try {
       search = await netflix.searchUpdate(movie: searchtext.text);
     } catch (e) {
       errorMessges('$e');
-    } finally {
-      flage = false;
-      notifyListeners();
     }
+    notifyListeners();
   }
 }
