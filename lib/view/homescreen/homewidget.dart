@@ -29,8 +29,11 @@ Widget topRatedwid(List movieList) {
                   },
                   child: CachedNetworkImage(
                       errorWidget: (context, url, error) => Icon(Icons.error),
-                      // placeholder: (context, url) =>
-                      //     Center(child: CircularProgressIndicator()),
+                      placeholder: (context, url) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
                       imageUrl: 'https://image.tmdb.org/t/p/w400$image'),
                 ),
               ),

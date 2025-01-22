@@ -42,7 +42,7 @@ class NetflixService {
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionError) {
         log("connection errror");
-        throw Exception('Connection error check your internet connection');
+        throw Exception('Check your internet connection');
       } else if (e.type == DioExceptionType.receiveTimeout) {
         throw Exception('server error');
       }
@@ -64,9 +64,9 @@ class NetflixService {
       }
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionError) {
-        throw Exception('Connection error check your internet connection');
+        throw Exception('Check your internet connection');
       } else if (e.type == DioExceptionType.receiveTimeout) {
-        throw Exception('server error');
+        throw Exception('Server error');
       }
     }
     throw Exception('error');
@@ -82,11 +82,11 @@ class NetflixService {
         List data = response.data['results'];
         return data.map((e) => Netflixmodel.fromJson(e)).toList();
       } else {
-        throw Exception('error in fetlching data');
+        throw Exception('error in fetching data');
       }
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionError) {
-        throw Exception('Connection error check your internet connection');
+        throw Exception('Check your internet connection');
       } else if (e.type == DioExceptionType.receiveTimeout) {
         throw Exception('server error');
       }
@@ -108,7 +108,7 @@ class NetflixService {
       }
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionError) {
-        throw Exception('Connection error check your internet connection');
+        throw Exception('Check your internet connection');
       } else if (e.type == DioExceptionType.receiveTimeout) {
         throw Exception('server error');
       }
