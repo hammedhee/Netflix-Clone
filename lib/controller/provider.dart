@@ -8,7 +8,7 @@ class NetflixProvider extends ChangeNotifier {
   List<Netflixmodel> listOfData = [];
   List<Netflixmodel> topRated = [];
   List<Netflixmodel> upcoming = [];
-  List<Netflixmodel>  tvShow = [];
+  List<Netflixmodel> tvShow = [];
   List<Netflixmodel> search = [];
   String? errorMessage;
   TextEditingController searchtext = TextEditingController();

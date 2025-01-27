@@ -8,8 +8,8 @@ import 'package:netflix/model/netflixmodel.dart';
 class NetflixService {
   final baseurl = Urlconstants.baseurl;
   Dio dio = Dio(BaseOptions(
-      connectTimeout: Duration(seconds: 5),
-      receiveTimeout: Duration(seconds: 5)));
+    connectTimeout: Duration(seconds: 2),
+  ));
 
   Future<List<Netflixmodel>> getAllNetflix() async {
     try {
@@ -21,10 +21,12 @@ class NetflixService {
       }
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionError) {
-        throw Exception('sever error');
+        throw Exception('Connction error error:$e');
+      } else {
+        throw Exception('Server Error');
       }
     }
-    throw Exception('error');
+    return [];
   }
 
   Future<List<Netflixmodel>> topRated() async {
@@ -37,17 +39,16 @@ class NetflixService {
         List data = response.data['results'];
         return data.map((e) => Netflixmodel.fromJson(e)).toList();
       } else {
-        throw Exception('error in fetlching data');
+        throw Exception('error in fetching data');
       }
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionError) {
-        log("connection errror");
+        log("connection error:$e");
         throw Exception('Check your internet connection');
-      } else if (e.type == DioExceptionType.receiveTimeout) {
-        throw Exception('server error');
+      } else {
+        throw Exception('Server Error:$e');
       }
     }
-    throw Exception('error');
   }
 
   Future<List<Netflixmodel>> upcoming() async {
@@ -65,11 +66,10 @@ class NetflixService {
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionError) {
         throw Exception('Check your internet connection');
-      } else if (e.type == DioExceptionType.receiveTimeout) {
-        throw Exception('Server error');
+      } else {
+        throw Exception('Server Error:$e');
       }
     }
-    throw Exception('error');
   }
 
   Future<List<Netflixmodel>> tvshows() async {
@@ -87,11 +87,10 @@ class NetflixService {
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionError) {
         throw Exception('Check your internet connection');
-      } else if (e.type == DioExceptionType.receiveTimeout) {
-        throw Exception('server error');
+      } else {
+        throw Exception('Server Error:$e');
       }
     }
-    throw Exception('error ');
   }
 
   Future<List<Netflixmodel>> searchUpdate({required String movie}) async {

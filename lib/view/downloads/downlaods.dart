@@ -38,8 +38,9 @@ class _DownlaodsState extends State<Downlaods> {
                 height: 150,
                 width: 100,
                 child: CachedNetworkImage(
-                    imageUrl:
-                        'https://image.tmdb.org/t/p/w400${value.imagePath}'),
+                  imageUrl: 'https://image.tmdb.org/t/p/w400${value.imagePath}',
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
               );
             },
           ),
