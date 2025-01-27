@@ -8,7 +8,7 @@ import 'package:netflix/model/netflixmodel.dart';
 class NetflixService {
   final baseurl = Urlconstants.baseurl;
   Dio dio = Dio(BaseOptions(
-    connectTimeout: Duration(seconds: 2),
+    connectTimeout: Duration(seconds: 3),
   ));
 
   Future<List<Netflixmodel>> getAllNetflix() async {

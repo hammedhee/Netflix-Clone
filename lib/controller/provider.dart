@@ -24,6 +24,7 @@ class NetflixProvider extends ChangeNotifier {
     } catch (e) {
       errorMessges('$e');
     }
+
     notifyListeners();
   }
 
@@ -33,6 +34,7 @@ class NetflixProvider extends ChangeNotifier {
     } catch (e) {
       errorMessges('$e');
     }
+
     notifyListeners();
   }
 
@@ -42,6 +44,7 @@ class NetflixProvider extends ChangeNotifier {
     } catch (e) {
       errorMessges('$e');
     }
+
     notifyListeners();
   }
 
