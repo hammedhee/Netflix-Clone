@@ -13,7 +13,7 @@ class NetflixProvider extends ChangeNotifier {
   String? errorMessage;
   TextEditingController searchtext = TextEditingController();
 
-  void errorMessges(String error) {
+  void errorMessages(String error) {
     errorMessage = error;
     notifyListeners();
   }
@@ -22,7 +22,7 @@ class NetflixProvider extends ChangeNotifier {
     try {
       listOfData = await netflix.getAllNetflix();
     } catch (e) {
-      errorMessges('$e');
+      errorMessages('$e');
     }
 
     notifyListeners();
@@ -32,7 +32,7 @@ class NetflixProvider extends ChangeNotifier {
     try {
       topRated = await netflix.topRated();
     } catch (e) {
-      errorMessges('$e');
+      errorMessages('$e');
     }
 
     notifyListeners();
@@ -42,7 +42,7 @@ class NetflixProvider extends ChangeNotifier {
     try {
       upcoming = await netflix.upcoming();
     } catch (e) {
-      errorMessges('$e');
+      errorMessages('$e');
     }
 
     notifyListeners();
@@ -52,7 +52,7 @@ class NetflixProvider extends ChangeNotifier {
     try {
       tvShow = await netflix.tvshows();
     } catch (e) {
-      errorMessges('$e');
+      errorMessages('$e');
     }
     notifyListeners();
   }
@@ -61,7 +61,7 @@ class NetflixProvider extends ChangeNotifier {
     try {
       search = await netflix.searchUpdate(movie: searchtext.text);
     } catch (e) {
-      errorMessges('$e');
+      errorMessages('$e');
     }
     notifyListeners();
   }
