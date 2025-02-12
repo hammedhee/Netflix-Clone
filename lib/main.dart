@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,
-        title: 'Netflix',
+        title: 'Netflixee',
         home: Splashscreen(),
       ),
     );
