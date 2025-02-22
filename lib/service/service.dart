@@ -11,6 +11,7 @@ class NetflixService {
     connectTimeout: Duration(seconds: 3),
   ));
 
+  
   Future<List<Netflixmodel>> getAllNetflix() async {
     try {
       final response = await dio.get(baseurl);
